@@ -7,6 +7,6 @@ CREATE TABLE `appointments` (
     `patient_id` INT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`doctor_id`),
-    FOREIGN KEY (`patient_id`) REFERENCES `patients` (`patient_id`)
-)
+    FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`doctor_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    FOREIGN KEY (`patient_id`) REFERENCES `patients` (`patient_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+);
