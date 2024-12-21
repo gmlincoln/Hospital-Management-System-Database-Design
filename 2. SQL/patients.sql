@@ -1,0 +1,9 @@
+CREATE TABLE `patients` (
+    `patient_id` INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL,
+    `age` INT,
+    `gender` VARCHAR(10),
+    `phone` VARCHAR(15),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
