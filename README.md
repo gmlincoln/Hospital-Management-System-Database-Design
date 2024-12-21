@@ -29,7 +29,7 @@ An **Entity Relationship Diagram (ERD)** is required to visualize the relationsh
 ### ER Diagram
 Below is an example of the ER diagram for the system:
 
-![ER Diagram](./path/to/your/ER-diagram-image.jpg)
+![ER Diagram](./1.%20Understanding%20Database%20and%20ER%20Diagram/ER%20Diagram_page-0001.jpg)
 
 ## SQL Database Queries
 Below is the SQL code for creating the database tables with the updated foreign key constraints:
