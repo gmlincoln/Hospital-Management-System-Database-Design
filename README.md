@@ -29,11 +29,10 @@ An **Entity Relationship Diagram (ERD)** is required to visualize the relationsh
 ### ER Diagram
 Below is an example of the ER diagram for the system:
 
-![ER Diagram](./1.%20Understanding%20Database%20and%20ER%20Diagram/ER%20Diagram_page-0001.jpg)
-
+![ER Diagram](./path/to/your/ER-diagram-image.jpg)
 
 ## SQL Database Queries
-Below is the SQL code for creating the database tables:
+Below is the SQL code for creating the database tables with the updated foreign key constraints:
 
 ```sql
 -- Create Table Queries
@@ -54,6 +53,7 @@ CREATE TABLE `doctors` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (`department_id`) REFERENCES `departments`(`department_id`)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE `patients` (
@@ -75,8 +75,44 @@ CREATE TABLE `appointments` (
     `patient_id` INT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (`doctor_id`) REFERENCES `doctors`(`doctor_id`),
+    FOREIGN KEY (`doctor_id`) REFERENCES `doctors`(`doctor_id`)
+    ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (`patient_id`) REFERENCES `patients`(`patient_id`)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+-- Insert Dummy Data
+
+
+-- Departments
+INSERT INTO `departments` (`name`, `location`) VALUES 
+('Cardiology', 'First Floor'),
+('Neurology', 'Second Floor'),
+('Pediatrics', 'Third Floor'),
+('Orthopedics', 'Fourth Floor'),
+('General Medicine', 'Ground Floor');
+
+-- Doctors
+INSERT INTO `doctors` (`name`, `specialization`, `phone`, `department_id`) VALUES 
+('Dr. Smith', 'Cardiologist', '1234567890', 1),
+('Dr. Jane', 'Neurologist', '0987654321', 2),
+('Dr. Miller', 'Pediatrician', '5678901234', 3),
+('Dr. Johnson', 'Orthopedic', '2345678901', 4),
+('Dr. Brown', 'General Practitioner', '3456789012', 5);
+
+-- Patients
+INSERT INTO `patients` (`name`, `age`, `gender`, `phone`) VALUES 
+('John Doe', 45, 'male', '1112223333'),
+('Jane Roe', 29, 'female', '4445556666'),
+('Sam Smith', 12, 'male', '7778889999'),
+('Alice White', 34, 'female', '1233211234'),
+('Bob Black', 60, 'male', '9876543210');
+
+-- Appointments
+INSERT INTO `appointments` (`date`, `time`, `status`, `doctor_id`, `patient_id`) VALUES 
+('2024-12-22', '10:00:00', 'Scheduled', 1, 1),
+('2024-12-22', '11:00:00', 'Scheduled', 2, 2),
+('2024-12-22', '12:00:00', 'Completed', 3, 3),
+('2024-12-23', '10:30:00', 'Scheduled', 4, 4),
+('2024-12-23', '11:30:00', 'Cancelled', 5, 5);
 
