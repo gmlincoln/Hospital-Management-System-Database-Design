@@ -26,7 +26,13 @@ An **Entity Relationship Diagram (ERD)** is required to visualize the relationsh
 - Show table relationships (e.g., one-to-many, many-to-one).
 - Highlight primary and foreign key constraints.
 
-## SQL Example Database Design
+### ER Diagram
+Below is an example of the ER diagram for the system:
+
+![ER Diagram](./1.%20Understanding%20Database%20and%20ER%20Diagram/ER%20Diagram_page-0001.jpg)
+
+
+## SQL Database Queries
 Below is the SQL code for creating the database tables:
 
 ```sql
@@ -72,3 +78,5 @@ CREATE TABLE `appointments` (
     FOREIGN KEY (`doctor_id`) REFERENCES `doctors`(`doctor_id`),
     FOREIGN KEY (`patient_id`) REFERENCES `patients`(`patient_id`)
 );
+
+
